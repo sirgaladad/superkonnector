@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperKonnector - AI-Powered LinkedIn Relationship Mapping</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">SuperKonnector</div>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#support">Support Us</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Discover Connections with SuperKonnector</h1>
+            <p>Map LinkedIn profiles, analyze relationships, and gain insightful connections—instantly.</p>
+            <a href="#generator" class="btn btn-large">Try it Now</a>
+        </section>
+        
+        <!-- Main Form Section -->
+        <section id="generator" class="form-section">
+            <h2>Generate Your Email</h2>
+            <form id="email-generator-form">
+                <div class="form-group">
+                    <label for="sender-linkedin">Your LinkedIn Profile</label>
+                    <input type="text" id="sender-linkedin" name="sender-linkedin" placeholder="e.g., linkedin.com/in/john-doe-123/" required>
+                    <span class="form-help">Paste your public LinkedIn URL or handle name</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="recipient-linkedin">Recipient's LinkedIn Profile</label>
+                    <input type="text" id="recipient-linkedin" name="recipient-linkedin" placeholder="e.g., linkedin.com/in/jane-smith-456/" required>
+                    <span class="form-help">Paste their public LinkedIn URL or handle name</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="occasion">Occasion</label>
+                    <select id="occasion" name="occasion" required>
+                        <option value="" disabled selected>Select an occasion</option>
+                        <option value="birthday">Birthday</option>
+                        <option value="work-anniversary">Work Anniversary</option>
+                        <option value="promotion">Promotion</option>
+                        <option value="thank-you">Thank You</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tone">Tone</label>
+                    <select id="tone" name="tone" required>
+                        <option value="" disabled selected>Select a tone</option>
+                        <option value="friendly">Friendly</option>
+                        <option value="formal">Formal</option>
+                        <option value="casual">Casual</option>
+                        <option value="playful">Playful</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-large">Generate Email</button>
+            </form>
+        </section>
+        
+        <!-- Results Section (initially hidden, will be shown via JS) -->
+        <section id="results" class="results-section">
+            <h2>Your Personalized Email</h2>
+            
+            <div class="synergy-highlights">
+                <p>You share 3 skills and 2 mutual connections. Your synergy score is 72.</p>
+            </div>
+            
+            <div class="email-result">
+                <div class="email-subject">
+                    <p>Subject: Congratulations on your new role at XYZ!</p>
+                </div>
+                
+                <div class="email-body">
+                    <p>Dear [Recipient Name],</p>
+                    <br>
+                    <p>I hope this email finds you well. I just saw the news about your recent promotion to [Position] at [Company], and I wanted to reach out to offer my sincere congratulations!</p>
+                    <br>
+                    <p>Given our shared background in [Industry/Skill], I know how meaningful this achievement must be. Your expertise in [Specific Skill] always impressed me when we [Context of Connection].</p>
+                    <br>
+                    <p>If you'd like to catch up sometime and share your experience in the new role, I'd love to hear about it.</p>
+                    <br>
+                    <p>Wishing you continued success and fulfillment in your new position!</p>
+                    <br>
+                    <p>Best regards,</p>
+                    <p>[Your Name]</p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="copy-btn" class="btn">Copy to Clipboard</button>
+                <button id="regenerate-btn" class="btn btn-secondary">Regenerate</button>
+            </div>
+        </section>
+        
+        <!-- Support Section -->
+        <section id="support" class="support-section">
+            <h2>Enjoying the tool? Help us grow!</h2>
+            <p>We're currently offering this tool for free. By supporting us on Patreon, you help us add more features and keep improving your experience.</p>
+            <a href="#" class="btn btn-patreon">Become a Patron</a>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">FAQ</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="copyright">
+                    <p>© 2025 SuperKonnector. Powered by Agent.ai & Lovable.dev</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Simple JS to show the results section when form is submitted -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('email-generator-form');
+            const resultsSection = document.getElementById('results');
+            const copyBtn = document.getElementById('copy-btn');
+            const regenerateBtn = document.getElementById('regenerate-btn');
+            
+            // Form submission
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // In a real implementation, you'd call your backend/API here
+                // For the MVP, we'll just show the results section
+                resultsSection.style.display = 'block';
+                
+                // Scroll to results
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Copy to clipboard functionality
+            copyBtn.addEventListener('click', function() {
+                const emailText = document.querySelector('.email-body').innerText;
+                const emailSubject = document.querySelector('.email-subject').innerText;
+                
+                // Copy the full email (subject + body) to clipboard
+                navigator.clipboard.writeText(emailSubject + '\n\n' + emailText)
+                    .then(() => {
+                        // Change button text temporarily to indicate success
+                        const originalText = copyBtn.innerText;
+                        copyBtn.innerText = 'Copied!';
+                        
+                        setTimeout(() => {
+                            copyBtn.innerText = originalText;
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+            });
+            
+            // Regenerate functionality
+            regenerateBtn.addEventListener('click', function() {
+                // In a real implementation, this would call your API again
+                // For MVP, we'll just scroll back to the form
+                form.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
