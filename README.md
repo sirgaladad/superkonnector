@@ -1,6 +1,6 @@
 #SuperKonnector
 
-![SuperKonnector Logo](https://via.placeholder.com/150x150)
+![SuperKonnector Logo](https://github.com/sirgaladad/superkonnector/blob/main/CoboBots%20SuperKonnector.png)
 
 ## AI-Powered LinkedIn Relationship Mapping Platform
 
