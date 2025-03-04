@@ -1,3 +1,18 @@
+// Add this at the beginning of your DOMContentLoaded event listener in script.js
+const themeToggle = document.getElementById('theme-toggle');
+    
+// Check for saved theme preference or use default
+const savedTheme = localStorage.getItem('theme') || (window.matchMedia("(prefers-color-scheme: dark)").matches ? 'dark' : 'light');
+document.documentElement.setAttribute('data-theme', savedTheme);
+
+// Toggle theme when button is clicked
+themeToggle.addEventListener('click', function() {
+    let currentTheme = document.documentElement.getAttribute('data-theme');
+    let newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+});
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('email-generator-form');
     const resultsSection = document.getElementById('results');

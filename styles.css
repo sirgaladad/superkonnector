@@ -49,6 +49,48 @@
         border: 1px solid var(--card-border);
     }
 
+    .theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border-radius: 50%;
+        margin-left: 15px;
+        color: var(--text-color);
+    }
+    
+    .theme-toggle:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    [data-theme="dark"] .theme-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .theme-icon-light {
+        display: block;
+    }
+    
+    .theme-icon-dark {
+        display: none;
+    }
+    
+    [data-theme="dark"] .theme-icon-light {
+        display: none;
+    }
+    
+    [data-theme="dark"] .theme-icon-dark {
+        display: block;
+    }
+    
+    /* Add transitions for smooth theme switching */
+    body, .form-section, .results-section, .support-section, footer, .btn, .email-body {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    
     /* Continue updating all your color properties to use the variables */
     
     .container {
