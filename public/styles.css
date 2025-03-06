@@ -1,0 +1,364 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    :root {
+        /* Light mode colors */
+        --background-color: #f9f9f9;
+        --text-color: #333;
+        --card-background: white;
+        --card-border: #e2e8f0;
+        --primary-color: #2563eb;
+        --primary-hover: #1d4ed8;
+        --secondary-background: #f0f7ff;
+        --muted-text: #6b7280;
+        --highlight-background: #eff6ff;
+        --header-background: white;
+        --footer-background: #f3f4f6;
+    }
+
+    [data-theme="dark"] {
+        /* Dark mode colors */
+        --background-color: #121212;
+        --text-color: #e0e0e0;
+        --card-background: #1e1e1e;
+        --card-border: #2d3748;
+        --primary-color: #3b82f6;
+        --primary-hover: #2563eb;
+        --secondary-background: #1a2333;
+        --muted-text: #9ca3af;
+        --highlight-background: #172033;
+        --header-background: #1a1a1a;
+        --footer-background: #1a1a1a;
+    }
+    
+    /* Update existing styles to use variables */
+    body {
+        background-color: var(--background-color);
+        color: var(--text-color);
+        line-height: 1.6;
+    }
+
+    .form-section, .dashboard-section, .talking-point-card, .analysis-card, .common-ground-card {
+        background-color: var(--card-background);
+        border: 1px solid var(--card-border);
+    }
+
+    .theme-toggle {
+        background: none;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px;
+        border-radius: 50%;
+        margin-left: 15px;
+        color: var(--text-color);
+    }
+    
+    .theme-toggle:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+    
+    [data-theme="dark"] .theme-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    .theme-icon-light {
+        display: block;
+    }
+    
+    .theme-icon-dark {
+        display: none;
+    }
+    
+    [data-theme="dark"] .theme-icon-light {
+        display: none;
+    }
+    
+    [data-theme="dark"] .theme-icon-dark {
+        display: block;
+    }
+    
+    /* Add transitions for smooth theme switching */
+    body, .form-section, .results-section, .support-section, footer, .btn, .email-body {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    
+    /* Continue updating all your color properties to use the variables */
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    /* Header styles */
+    header {
+        background-color: var(--header-background);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        padding: 1rem 0;
+    }
+    
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    
+    .nav-links a {
+        margin-left: 20px;
+        text-decoration: none;
+        color: var(--text-color);
+        font-weight: 500;
+    }
+    
+    .nav-links a:hover {
+        color: var(--primary-hover);
+    }
+    
+    /* Hero section */
+    .hero {
+        padding: 4rem 0;
+        text-align: center;
+        background-color: var(--secondary-background);
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--primary-color);
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        color: var(--muted-text);
+        max-width: 800px;
+        margin: 0 auto 1.5rem;
+    }
+    
+    /* Main form section */
+    .form-section {
+        background-color: var(--card-background);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+    }
+    
+    .form-section h2 {
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+    
+    .form-group input, 
+    .form-group select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        font-size: 1rem;
+    }
+    
+    .form-group input:focus, 
+    .form-group select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+    
+    .form-help {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        color: var(--muted-text);
+    }
+    
+    .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    
+    .btn:hover {
+        background-color: var(--primary-hover);
+    }
+    
+    .btn-large {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+    }
+    
+    /* Results section */
+    .results-section {
+        background-color: var(--card-background);
+        border-radius: 8px;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        margin-bottom: 2rem;
+        display: none; /* Hidden initially */
+    }
+    
+    .results-section h2 {
+        margin-bottom: 1.5rem;
+        color: var(--primary-color);
+    }
+    
+    .synergy-highlights {
+        background-color: var(--highlight-background);
+        border-radius: 6px;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .email-result {
+        margin-bottom: 1.5rem;
+    }
+    
+    .email-subject {
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    
+    .email-body {
+        background-color: var(--card-background);
+        border: 1px solid var(--card-border);
+        border-radius: 4px;
+        padding: 1rem;
+        min-height: 200px;
+    }
+    
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .btn-secondary {
+        background-color: var(--footer-background);
+        color: var(--text-color);
+        border: 1px solid var(--card-border);
+    }
+    
+    .btn-secondary:hover {
+        background-color: #e5e7eb;
+    }
+    
+    /* Support section */
+    .support-section {
+        background-color: var(--highlight-background);
+        border-radius: 8px;
+        padding: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+    
+    .support-section h2 {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+    }
+    
+    .support-section p {
+        margin-bottom: 1.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .btn-patreon {
+        background-color: #ff424d;
+    }
+    
+    .btn-patreon:hover {
+        background-color: #e03940;
+    }
+    
+    /* Footer */
+    footer {
+        background-color: var(--footer-background);
+        padding: 2rem 0;
+        margin-top: 3rem;
+    }
+    
+    .footer-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .footer-links a {
+        margin-right: 1.5rem;
+        text-decoration: none;
+        color: var(--muted-text);
+    }
+    
+    .footer-links a:hover {
+        color: var(--primary-hover);
+    }
+    
+    .copyright {
+        color: var(--muted-text);
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+        .navbar {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .nav-links {
+            margin-top: 1rem;
+        }
+        
+        .nav-links a {
+            margin-left: 0;
+            margin-right: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2rem;
+        }
+        
+        .action-buttons {
+            flex-direction: column;
+        }
+        
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin-bottom: 1rem;
+        }
+    }
